@@ -26,31 +26,37 @@ export class Punto {
         return raiCuadrada
     }
     public calcularCuadrante(): number {
-        let resultado: number = 0
+        let resultado: number
         if (this.x == 0 && this.y == 0) {
-            resultado;
-        } else if (Math.sign(this.x) == 1 && Math.sign(this.y) == 1) {
+            resultado = 0;
+        } else if (this.x>=0 && this.y>=0) {
             resultado = 1;
-        } else if (Math.sign(this.x) == -1 && Math.sign(this.y) == 1) {
+        } else if (this.x <0 && this.y >=0) {
             resultado = 2;
-        } else if (Math.sign(this.x) == -1 && Math.sign(this.y) == -1) {
+        } else if (this.x < 0 && this.y<0) {
             resultado = 3;
-        } else if (Math.sign(this.x) == 1 && Math.sign(this.y) == -1) {
+        } else if (this.x >=0 && this.y<0) {
             resultado = 4;
         }
         return resultado
     }
-    public calcularMasCercano(puntos:Punto[]){
-        
+    public calcularMasCercano(puntos: Punto[]):Punto {
+        let resultado: Punto = puntos[0]
+        let distancia: number = this.calcularDistancia(puntos[0])
+        for (let i = 1; i < puntos.length; i++) {
+            if(this.calcularDistancia(puntos[i])< distancia){
+                distancia = this.calcularDistancia(puntos[i])
+                resultado = puntos[i]
+            }
+        }
+        return resultado
     }
     public getX(): number {
         return this.x;
     }
-
     public setX(x: number) {
         this.x = x;
     }
-
     public getY(): number {
         return this.y;
     }
