@@ -29,22 +29,22 @@ export class Punto {
         let resultado: number
         if (this.x == 0 && this.y == 0) {
             resultado = 0;
-        } else if (this.x>=0 && this.y>=0) {
+        } else if (this.x >= 0 && this.y >= 0) {
             resultado = 1;
-        } else if (this.x <0 && this.y >=0) {
+        } else if (this.x < 0 && this.y >= 0) {
             resultado = 2;
-        } else if (this.x < 0 && this.y<0) {
+        } else if (this.x < 0 && this.y < 0) {
             resultado = 3;
-        } else if (this.x >=0 && this.y<0) {
+        } else if (this.x >= 0 && this.y < 0) {
             resultado = 4;
         }
         return resultado
     }
-    public calcularMasCercano(puntos: Punto[]):Punto {
+    public calcularMasCercano(puntos: Punto[]): Punto {
         let resultado: Punto = puntos[0]
         let distancia: number = this.calcularDistancia(puntos[0])
         for (let i = 1; i < puntos.length; i++) {
-            if(this.calcularDistancia(puntos[i])< distancia){
+            if (this.calcularDistancia(puntos[i]) < distancia) {
                 distancia = this.calcularDistancia(puntos[i])
                 resultado = puntos[i]
             }
